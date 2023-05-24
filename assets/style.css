@@ -1,0 +1,21 @@
+.images {
+    width: 250px;
+    height: 250px;
+    padding: 10px;
+    margin: 2px
+
+
+}
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.row {
+    display: flex;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .column {
+    flex: 40%;
+    padding: 2px;
+  }
+
+  
