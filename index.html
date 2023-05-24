@@ -7,17 +7,21 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
     </head>
     
-    <section class="section">
+    <!-- <section class="hero has-background-black"> 
+      <div class="hero body">
       <div class="container">
-        <h1 class="title">
+        <h1 class="title has-text-white">
           hello world
         </h1>
-        <p class="subtitle">
-          my first website with <strong>Bulma</strong>!
+        <p class="subtitle has-text-white">
+          my first website with bumla!
         </p>
+      </div>
       </div>
     </section>
     </html>
+      -->
+
     
     
     
@@ -44,10 +48,12 @@
     
     
     
-    <!--  
+   
     <body>
-        <header class="main-header"> 
-        <img src="assets/images/Second marvel image.jpeg" alt="marvel characters">
+        <header class="hero has-background-black"> 
+          <div class="hero body">
+        <img src="assets/images/Second marvel image.jpeg" style ="max-height: 275px;""alt="marvel characters">
+            </div>
             
         </header>
         <p>This is a test to see if you can find your correct Marvel Character</p>
@@ -64,30 +70,41 @@
                   <button type="submit" class="btn">Get History</button>
                 </form>
               </div>
-
-              <div class="character-images">
-                <button>
+              <section class="section">
+                <div class="container">
+                  <div class="columns">
+                    <div class="column">
+                      <button>
                    <a href="https://www.marvel.com/search?limit=20&query=thanos&offset=0">
                    <img src="./assets/images/thanos.jpeg" alt="Thanos Image">
                    </a>
                 </button>  
-               <button>
-                   <a href="https://www.marvel.com/search?limit=20&query=iron%20man">
-                   <img src="./assets/images/Iron-man.jpeg" alt="Iron Man Image">
-                   </a>    
-               </button>
-                <button>
-                   <a href="https://www.marvel.com/search?limit=20&query=thor&offset=0">
-                   <img src="./assets/images/thor.jpeg" alt="Thor Image">
-                   </a>    
-               </button> 
-               <button> 
-                   <a href="https://www.marvel.com/search?limit=20&query=black%20widow&offset=0">
-                   <img src="./assets/images/black-widow.jpeg" alt="Black Widow Image">
-                   </a>    
-               </button>        
-              -->
-    
+                    </div>
+                    <div class="column">
+                      <button>
+                        <a href="https://www.marvel.com/search?limit=20&query=iron%20man">
+                        <img src="./assets/images/Iron-man.jpeg" alt="Iron Man Image">
+                        </a>    
+                    </button>
+                    </div>
+                    <div class="column">
+                      <a href="https://www.marvel.com/search?limit=20&query=thor&offset=0">
+                        <img src="./assets/images/thor.jpeg" alt="Thor Image">
+                        </a>    
+                    </button> 
+                    </div>
+                    <div class="column">
+                      <button> 
+                        <a href="https://www.marvel.com/search?limit=20&query=black%20widow&offset=0">
+                        <img src="./assets/images/black-widow.jpeg" alt="Black Widow Image">
+                        </a>    
+                    </button>       
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+              
     </body>
 
 </html>
