@@ -13,37 +13,37 @@ var marvelSearchTerm = document.querySelector('#marvel-search-term');
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var characterName = nameInputEl.value.trim();
+  var characterName = characterInputEl.value.trim();
 
   if  (characterName) {
     getSearchResults(characterName);
 
-    resultContainerEl.textContent = '';
-    nameInputEl.value = '';
-  } else {
+    resultContainerEl.textContent = ''; 
+    characterInputEl.value = ''; 
+  } 
+  else {
     alert('Please enter a Marvel character');
   }
 };
 
 var buttonClickHandler = function (event) {
-  var language = event.target.getAttribute('data-category');
+  var language = event.target.getAttribute('data-language');
 
   if (language) {
-    getSearchResults(language);
+    getCharacterResults(language);
 
     resultContainerEl.textContent = '';
   }
 };
 
-var getSearchResults = function (data) {
-  var apiUrl = 'developer.marvel.com/3b41988d37a01d92d13f568a454743cb' + data + '';
+var getSearchResults = function (user) {
+  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
 
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displaySearchResults(data);
-          console.log(data);
+          displayResults(data, user);
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -56,13 +56,13 @@ var getSearchResults = function (data) {
 
 
 
-var getFeaturedRepos = function (language) {
+var getCharacterResults = function (language) {
   var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        displayRepos(data.items, language);
+        displayResults(data.items, language);
       });
     } else {
       alert('Error: ' + response.statusText);
@@ -70,13 +70,13 @@ var getFeaturedRepos = function (language) {
   });
 };
 
-var displayRepos = function (repos, searchTerm) {
+var displayResults = function (repos, searchTerm) {
   if (repos.length === 0) {
     repoContainerEl.textContent = 'No repositories found.';
     return;
   }
 
-  repoSearchTerm.textContent = searchTerm;
+  marvelSearchTerm.textContent = searchTerm;
 
   for (var i = 0; i < repos.length; i++) {
     var repoName = repos[i].owner.login + '/' + repos[i].name;
@@ -102,9 +102,9 @@ var displayRepos = function (repos, searchTerm) {
 
     repoEl.appendChild(statusEl);
 
-    repoContainerEl.appendChild(repoEl);
+    resultContainerEl.appendChild(repoEl);
   }
 };
 
 userFormEl.addEventListener('submit', formSubmitHandler);
-languageButtonsEl.addEventListener('click', buttonClickHandler);
+

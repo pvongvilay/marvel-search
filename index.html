@@ -34,10 +34,15 @@
         </header>
         <h2>Want to know more about your favorite MARVEL character, we got you covered.</h2>
         <h3>Search for your favorite Marvel character and see the magic happen!!</h3>
-        <form class="searchbtn" action="/action_page.php">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+        <div class="card">
+          <h3 class="card-header text-uppercase">Search By Character</h3>
+          <form id="user-form" class="card-body">
+            <label class="form-label" for="character-name">Character Name</label>
+            <input name="character-name" id="character-name" type="text" autofocus="true" class="form-input" />
+            <button type="submit" class="btn">Get History</button>
+          </form>
+        </div>
+  
     
         <main class="flex-row justify-space-between">
 
@@ -47,7 +52,10 @@
               </div>
             </section>
           
-          
+            <div class="col-12 col-md-8">
+              <h2 class="subtitle">Showing Character History: <span id="marvel-search-term"></span></h2>
+              <div id="result-container" class="list-group"></div>
+            </div> 
           
           <!-- <div class="col-12 col-md-4"> 
 
@@ -85,7 +93,7 @@
                     </div>
                     <div class="column">
                          <a href="https://www.marvel.com/search?limit=20&query=thor&offset=0">
-
+                    <button>  
                         <img class="images" src="./assets/images/spiderman.jpeg" alt="Thor Image">
                         </a>    
                     </button> 
@@ -104,9 +112,12 @@
                       <img class="images" src="./assets/images/hulk.jpeg" alt="Thanos Image">
                       </a>
                   </button> 
-              </div>    
-              </section>
+              </div> 
               
-    </body>
+        </main>       
+              </section>
+              <script src="./assets/script.js"></script>
+              
+  </body>
 
 </html>
