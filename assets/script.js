@@ -16,7 +16,11 @@ var formSubmitHandler = function (event) {
   var characterName = nameInputEl.value.trim();
 
   if  (characterName) {
+<<<<<<< Updated upstream
     getSearchResults(characterName);
+=======
+    getSearchResults(charactername);
+>>>>>>> Stashed changes
 
     resultContainerEl.textContent = '';
     nameInputEl.value = '';
@@ -29,7 +33,11 @@ var buttonClickHandler = function (event) {
   var language = event.target.getAttribute('data-category');
 
   if (language) {
+<<<<<<< Updated upstream
     getSearchResults(language);
+=======
+    resultContainerEl(language);
+>>>>>>> Stashed changes
 
     resultContainerEl.textContent = '';
   }
