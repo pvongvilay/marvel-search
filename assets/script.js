@@ -10,6 +10,9 @@ var characterInputEl = document.querySelector('#character-name');
 var resultContainerEl = document.querySelector('#result-container');
 var marvelSearchTerm = document.querySelector('#marvel-search-term');
 
+
+
+
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
@@ -17,9 +20,13 @@ var formSubmitHandler = function (event) {
 
   if  (characterName) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     getSearchResults(characterName);
 =======
     getSearchResults(charactername);
+>>>>>>> Stashed changes
+=======
+    marvelSearchTerm(characterName);
 >>>>>>> Stashed changes
 
     resultContainerEl.textContent = '';
@@ -30,21 +37,26 @@ var formSubmitHandler = function (event) {
 };
 
 var buttonClickHandler = function (event) {
-  var language = event.target.getAttribute('data-category');
+  var searchResults = event.target.getAttribute('data');
 
+<<<<<<< Updated upstream
   if (language) {
 <<<<<<< Updated upstream
     getSearchResults(language);
 =======
     resultContainerEl(language);
 >>>>>>> Stashed changes
+=======
+  if (data) {
+    marvelSearchTerm(data);
+>>>>>>> Stashed changes
 
     resultContainerEl.textContent = '';
   }
 };
 
-var getSearchResults = function (data) {
-  var apiUrl = 'developer.marvel.com/3b41988d37a01d92d13f568a454743cb' + data + '';
+var marvelSearchTerm = function (data) {
+  var apiUrl = 'developer.marvel.com3b41988d37a01d92d13f568a454743cb' + data;
 
   fetch(apiUrl)
     .then(function (response) {
@@ -61,7 +73,6 @@ var getSearchResults = function (data) {
       alert('Please search another character.');
     });
 };
-
 
 
 var getFeaturedRepos = function (language) {
