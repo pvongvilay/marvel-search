@@ -13,10 +13,10 @@ var marvelSearchTerm = document.querySelector('#marvel-search-term');
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var charactername = nameInputEl.value.trim();
+  var characterName = nameInputEl.value.trim();
 
-  if  (charactername) {
-    getUserRepos(charactername);
+  if  (characterName) {
+    getSearchResults(characterName);
 
     resultContainerEl.textContent = '';
     nameInputEl.value = '';
@@ -29,29 +29,32 @@ var buttonClickHandler = function (event) {
   var language = event.target.getAttribute('data-category');
 
   if (language) {
-    getFeaturedRepos(language);
+    getSearchResults(language);
 
-    repoContainerEl.textContent = '';
+    resultContainerEl.textContent = '';
   }
 };
 
-var getUserRepos = function (user) {
-  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+var getSearchResults = function (data) {
+  var apiUrl = 'developer.marvel.com/3b41988d37a01d92d13f568a454743cb' + data + '';
 
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayRepos(data, user);
+          displaySearchResults(data);
+          console.log(data);
         });
       } else {
         alert('Error: ' + response.statusText);
       }
     })
     .catch(function (error) {
-      alert('Unable to connect to GitHub');
+      alert('Please search another character.');
     });
 };
+
+
 
 var getFeaturedRepos = function (language) {
   var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';
