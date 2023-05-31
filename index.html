@@ -3,33 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
+        <link rel="stylesheet" href="./assets/style.css" /> 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
-        <!-- <style>  -->
-          .center-text {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        </style>
+      <style>
+
+      </style>  
+     
     </head>
-    
-    <!-- <section class="hero has-background-black"> 
-      <div class="hero body">
-      <div class="container">
-        <h1 class="title has-text-white">
-          hello world
-        </h1>
-        <p class="subtitle has-text-white">
-          my first website with bumla!
-        </p>
-      </div>
-      </div>
-    </section>
-    </html>
-      -->       
-    
-   
     <body>
         <header class="hero has-background-danger-dark "> 
 
@@ -45,24 +25,24 @@
 
        
         <div class="container">
-          <div class="notification">
+          <div class="notification has-text-centered m-5 is-size-5">
         Want to know more about your favorite MARVEL character, we got you covered.
         Search for your favorite Marvel character and see the magic happen!!
         <div class="center-text">
-           <h1 class="title" >Search By Character</h1>
+           <h1 class="title has-text-centered m-5" >Search By Character</h1>
         </div>
 
-          <form id="user-form" class="card-body">
+          <form id="user-form" class="card-body has-text-centered m-5 has-text-weight-bold">
              Character Name
             <input name="character-name" id="character-name" type="text" autofocus="true" class="form-input" />
-            <button type="submit" class="btn">Get History</button>
+            <button type="submit" class="btn">submit</button>
           </form>
         </div>
         </div>
         </div>
   
     
-        <main class="flex-row justify-space-between">
+        <main>
 
             <section class="section">
               <div class="container"></div>
@@ -72,27 +52,15 @@
             
             </section>
           
-            <div class="col-12 col-md-8">
-              <h2 class="subtitle">Showing Character History: <span id="marvel-search-term"></span></h2>
+            <div class="column">
+              <h2 class="subtitle has-text-centered is-underlined">Showing Character History <span id="marvel-search-term"></span></h2>
               <div id="result-container" class="list-group"></div>
             </div> 
-          
-          <!-- <div class="col-12 col-md-4"> 
-
            
-        
-              <div class="card">
-                <h3 class="card-header text-uppercase">Search by Character Name</h3>
-                <form id="user-form" class="card-body">
-                  <label class="form-label" for="username">Character Name</label>
-                  <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-                  <button type="submit" class="btn">Get History</button>
-                </form>
-
          
               <section class="section">
                   <div class="columns">
-                    <div class="column">
+                    <div class="column ml-6">
                         <a href="https://www.marvel.com/search?limit=20&query=thanos&offset=0">
 
                         <img class="images" src="./assets/images/hulk.jpeg" alt="Thanos Image">
@@ -114,10 +82,11 @@
                         </a>    
                     </div>
                   </div>
+                  
               </section>
                     <section class="section">
                       <div class="columns">
-                        <div class="column">
+                        <div class="column ml-6">
                           <img class="images" src="./assets/images/Loki.jpeg">
                       </div>
                     <div class="column">  
