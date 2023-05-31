@@ -3,8 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="./assets/style.css" />
+        <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+        <!-- <style>  -->
+          .center-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        </style>
     </head>
     
     <!-- <section class="hero has-background-black"> 
@@ -24,99 +31,81 @@
     
    
     <body>
-        <header class="hero has-background-black"> 
+        <header class="hero has-background-danger-dark "> 
+
           <div class="hero body">
-
-        <img src="assets/images/Marvel-third-image copy.jpeg" style ="max-height: 275px;" alt="marvel characters">
-
+          <div class="container">
+            <figure class="image center">
+        <img src="assets/images/Marvel-third-image copy.jpeg" style ="max-height: 400px; " alt="marvel characters">
+        </figure>
+          </div>
             </div>
             
         </header>
-        <h2>Want to know more about your favorite MARVEL character, we got you covered.</h2>
-        <h3>Search for your favorite Marvel character and see the magic happen!!</h3>
-        <div class="card">
-          <h3 class="card-header text-uppercase">Search By Character</h3>
+        <div class="container">
+          <div class="notification">
+        Want to know more about your favorite MARVEL character, we got you covered.
+        Search for your favorite Marvel character and see the magic happen!!
+        <div class="center-text">
+           <h1 class="title" >Search By Character</h1>
+        </div>
           <form id="user-form" class="card-body">
-            <label class="form-label" for="character-name">Character Name</label>
+             Character Name
             <input name="character-name" id="character-name" type="text" autofocus="true" class="form-input" />
             <button type="submit" class="btn">Get History</button>
           </form>
         </div>
+        </div>
+        </div>
   
     
         <main class="flex-row justify-space-between">
-
-            <section class="section">
-              <div class="container">
-              
-              </div>
-            </section>
-          
-            <div class="col-12 col-md-8">
-              <h2 class="subtitle">Showing Character History: <span id="marvel-search-term"></span></h2>
-              <div id="result-container" class="list-group"></div>
-            </div> 
-          
-          <!-- <div class="col-12 col-md-4"> 
-
-           
-        
-              <div class="card">
-                <h3 class="card-header text-uppercase">Search by Character Name</h3>
-                <form id="user-form" class="card-body">
-                  <label class="form-label" for="username">Character Name</label>
-                  <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-                  <button type="submit" class="btn">Get History</button>
-                </form>
-
-              </div>-->
-
               <section class="section">
-                <div class="container">
                   <div class="columns">
                     <div class="column">
-                      <button>
                         <a href="https://www.marvel.com/search?limit=20&query=thanos&offset=0">
 
                         <img class="images" src="./assets/images/hulk.jpeg" alt="Thanos Image">
                         </a>
-                      </button>  
                     </div>
                     <div class="column">
-                      <button>
                         <a href="https://www.marvel.com/search?limit=20&query=iron%20man">
-
                         <img class="images" src="./assets/images/loki.jpeg" alt="Iron Man Image">
-
                         </a>    
-                    </button>
                     </div>
                     <div class="column">
-                      <button>
                          <a href="https://www.marvel.com/search?limit=20&query=thor&offset=0">
-                    <button>  
                         <img class="images" src="./assets/images/spiderman.jpeg" alt="Thor Image">
-                        </a>    
-                    </button> 
+                        </a> 
                     </div>
                     <div class="column">
-                      <button> 
                         <a href="https://www.marvel.com/search?limit=20&query=black%20widow&offset=0">
-
                         <img class="images" src="./assets/images/scarlet witch.jpeg" alt="Black Widow Image">
-
                         </a>    
-                    </button>
-              <div>   
-                  <button>
-                      <a href="https://www.marvel.com/search?limit=20&query=thanos&offset=0">
-                      <img class="images" src="./assets/images/hulk.jpeg" alt="Thanos Image">
-                      </a>
-                  </button> 
-              </div> 
-              
-        </main>       
+                    </div>
+                  </div>
               </section>
+                    <section class="section">
+                      <div class="columns">
+                        <div class="column">
+                          <img class="images" src="./assets/images/Loki.jpeg">
+                      </div>
+                    <div class="column">  
+                      <a href="https://www.marvel.com/search?limit=20&query=thanos&offset=0">
+                      <img class ="images" src="./assets/images/hulk.jpeg" alt="Thanos Image">
+                      </a>
+                    </div> 
+                    <div class="column">
+                      <a href="https://www.marvel.com/search?limit=20&query=thanos&offset=0">
+                        <img class="images" src="./assets/images/Iron-man.jpeg">
+                      </a>
+                    </div>
+                    <div class="column">
+                      <img class="images" src="./assets/images/thanos.jpeg">
+                    </div>
+              </section>
+
+        </main>       
               <script src="./assets/script.js"></script>
               
   </body>
