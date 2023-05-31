@@ -14,12 +14,25 @@ var formSubmitHandler = function (event) {
   event.preventDefault();
 
   var characterName = characterInputEl.value.trim();
+  var storedName = localStorage.getItem('characterNames');
+  var characterNames = JSON.parse(storedName); // characterNames is an array of names
+
 
   if  (characterName) {
     getSearchResults(characterName);
 
     resultContainerEl.textContent = ''; 
     characterInputEl.value = ''; 
+    console.log(characterName);
+  if (characterNames)  {
+    characterNames.push(characterName)
+  }
+  else {
+    characterNames=[characterName]
+  }
+    localStorage.setItem('characterNames', JSON.stringify(characterNames))
+    // localStorage.getItem('characterName');
+    document.getElementById('characterNames').innerHTML = characterNames;
   } 
   else {
     alert('Please enter a Marvel character');
@@ -33,6 +46,7 @@ var buttonClickHandler = function (event) {
     getCharacterResults(language);
 
     resultContainerEl.textContent = '';
+    
   }
 };
 
