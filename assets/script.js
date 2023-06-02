@@ -51,13 +51,13 @@ var buttonClickHandler = function (event) {
 };
 
 var getSearchResults = function (user) {
-  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
-
-  fetch(apiUrl)
-    .then(function (response) {
+  
+  var apiUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=marvel%20${user}`;
+	console.log(apiUrl);
+  fetch(apiUrl).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayResults(data, user);
+          displayWikiData(data, user);
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -68,10 +68,12 @@ var getSearchResults = function (user) {
     });
 };
 
+// 'https://en.wikipedia.org/w/api.php?action=query&format=json&limit=15&callback=?&titles=' + searchCriteria, processResult);
 
 
 var getCharacterResults = function (language) {
-  var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';
+  var apiUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${x}'
+	console.log(apiUrl);
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -83,6 +85,13 @@ var getCharacterResults = function (language) {
     }
   });
 };
+
+var displayWikiData = function (data, search) {
+  console.log(data)
+}
+// what data do you want to grab out
+// loop and display some HTML elements to display on page
+// 
 
 var displayResults = function (repos, searchTerm) {
   if (repos.length === 0) {
