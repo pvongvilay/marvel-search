@@ -45,9 +45,9 @@ var buttonClickHandler = function (event) {
     getCharacterResults(language);
 
     resultContainerEl.textContent = '';
-    
   }
 };
+
 
 var getSearchResults = function (user) {
   
@@ -94,6 +94,8 @@ var displayWikiData = function (data, searchTerm) {
   }
   
 }
+
+
 // what data do you want to grab out
 // loop and display some HTML elements to display on page
 // 
@@ -109,7 +111,18 @@ var displayResults = function (data) {
 
   }
 
-  
-  
+var baseUrl = "http://gateway.marvel.com";
+var apiKey = "6229f92d803a98103b1a75e888b250e9"; // get and insert api key from marvel here
+var mySearchName = "thor"; // change to the search input value
 
+fetch(baseUrl + "/v1/public/characters?name=" + mySearchName + "&apikey=" + apiKey)
+  .then(function (res) {
+    console.log(res);
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  });
+  
+// add new referrer to marvel.com when deployed
  userFormEl.addEventListener('submit', formSubmitHandler);
