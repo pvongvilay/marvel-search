@@ -32,7 +32,6 @@ var formSubmitHandler = function (event) {
     characterNames=[characterName]
   }
     localStorage.setItem('characterNames', JSON.stringify(characterNames))
-    // document.getElementById('characterNames').innerHTML = characterNames;
   } 
   else {
     alert('Please enter a Marvel character');
@@ -106,9 +105,9 @@ fetch(baseUrl + "/v1/public/characters?nameStartsWith=" + mySearchName + "&apike
   .then(function (data) {
     console.log(data);
     var character = data.data.results[0]
-    var name = data.data.results[0].name
-    var description = data.data.results[0].description
-    var thumb = data.data.results[0].thumbnail.path + '.' +data.data.results[0].thumbnail.extension
+    var name = character.name
+    var description = character.description
+    var thumb = character.thumbnail.path + '.' +character.thumbnail.extension
     displayMarvelCharacter(name,description,thumb)
   });
 }
@@ -120,14 +119,7 @@ fetch(baseUrl + "/v1/public/characters?nameStartsWith=" + mySearchName + "&apike
       resultContainerEl.innerHTML = resultContainerEl.innerHTML + title + img
     }
     
-  // if(response.ok){
-//   response.json().then(function(data){
-//     displayMarvelData(data,user);
-//   })
-// }
-// else {
-//   alert('error: ' + response.statusText);
-// }
+
 
 // add new referrer to marvel.com when deployed
  userFormEl.addEventListener('submit', formSubmitHandler);
