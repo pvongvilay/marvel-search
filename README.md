@@ -21,4 +21,5 @@
 
 ## Assets
 
-![Here is a picture of the website mockup.](assets/Marvel-website-mockup.jpeg)
+![Here is a picture of the website mockup.](assets/images/Marvel-website-mockup.jpeg)
+![Here is a picture of the search website for a character.](assets/images/screencapture-127-0-0-1-5500-index-html-2023-06-05-10_22_51.png)
