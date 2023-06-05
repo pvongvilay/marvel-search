@@ -20,9 +20,10 @@ var formSubmitHandler = function (event) {
 
   if  (characterName) {
     getSearchResults(characterName);
+    getMarvelData(characterName);
 
-    resultContainerEl.textContent = ''; 
-    characterInputEl.value = ''; 
+   resultContainerEl.textContent = ''; 
+     characterInputEl.value = ''; 
     console.log(characterName);
   if (characterNames)  {
     characterNames.push(characterName)
@@ -31,8 +32,6 @@ var formSubmitHandler = function (event) {
     characterNames=[characterName]
   }
     localStorage.setItem('characterNames', JSON.stringify(characterNames))
-    
-    document.getElementById('characterNames').innerHTML = characterNames;
   } 
   else {
     alert('Please enter a Marvel character');
@@ -45,10 +44,10 @@ var buttonClickHandler = function (event) {
   if (language) {
     getCharacterResults(language);
 
-    resultContainerEl.textContent = '';
-    
+  resultContainerEl.textContent = '';
   }
 };
+
 
 var getSearchResults = function (user) {
   
@@ -63,72 +62,63 @@ var getSearchResults = function (user) {
         alert('Error: ' + response.statusText);
       }
     })
-    .catch(function (error) {
+     .catch(function (error) {
       alert('Please search another character.');
     });
 };
 
-// 'https://en.wikipedia.org/w/api.php?action=query&format=json&limit=15&callback=?&titles=' + searchCriteria, processResult);
-
-
-var getCharacterResults = function (language) {
-  var apiUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${x}'
-	console.log(apiUrl);
-
-  fetch(apiUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        displayResults(data.items, language);
-      });
-    } else {
-      alert('Error: ' + response.statusText);
-    }
-  });
-};
 
 var displayWikiData = function (data, searchTerm) {
-  console.log(data)
-}
-// what data do you want to grab out
-// loop and display some HTML elements to display on page
-// 
+  console.log(data.query.search, searchTerm)
+  var results = data.query.search;
+  for (var i=0 ; i < results.length; i++ ){ 
+    var listItem = `<li>${results[i].title}</li>`
+    resultContainerEl.innerHTML = resultContainerEl.innerHTML + listItem
 
-var displayResults = function (data, searchTerm) {
-    console.log(data)
+  }
+  
+}
+
+
+
+var displayResults = function (data) {
   if (data.length === 0) {
     resultContainerEl.textContent = 'No entries found.';
     return;
+  }}
+ function ClickHandler(event) {
+    console.log(data)
+    resultContainerEl.textContent=data
+
   }
 
-  marvelSearchTerm.textContent = searchTerm;
+var baseUrl = "https://gateway.marvel.com";
+var apiKey = "6229f92d803a98103b1a75e888b250e9"; // get and insert api key from marvel here
 
-  for (var i = 0; i < repos.length; i++) {
-    var repoName = repos[i].owner.login + '/' + repos[i].name;
+function getMarvelData(mySearchName){
+fetch(baseUrl + "/v1/public/characters?nameStartsWith=" + mySearchName + "&apikey=" + apiKey)
+.then(function (res) {
+    console.log(res);
+    return res.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    var character = data.data.results[0]
+    var name = character.name
+    var description = character.description
+    var thumb = character.thumbnail.path + '.' +character.thumbnail.extension
+    displayMarvelCharacter(name,description,thumb)
+  });
+}
 
-    var repoEl = document.createElement('a');
-    repoEl.classList = 'list-item flex-row justify-space-between align-center';
-    repoEl.setAttribute('href', './single-repo.html?repo=' + repoName);
-
-    var titleEl = document.createElement('span');
-    titleEl.textContent = repoName;
-
-    repoEl.appendChild(titleEl);
-
-    var statusEl = document.createElement('span');
-    statusEl.classList = 'flex-row align-center';
-
-    if (repos[i].open_issues_count > 0) {
-      statusEl.innerHTML =
-        "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + ' issue(s)';
-    } else {
-      statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
+  var displayMarvelCharacter = function (name,description,thumb) {
+      var title = `<h3>${name}</h3> <p>${description}</p>`
+      var img = `<img src = "${thumb}"></img>`
+    
+      resultContainerEl.innerHTML = resultContainerEl.innerHTML + title + img
     }
+    
 
-    repoEl.appendChild(statusEl);
 
-    resultContainerEl.appendChild(repoEl);
-  }
-};
-
-userFormEl.addEventListener('submit', formSubmitHandler);
-
+// add new referrer to marvel.com when deployed
+ userFormEl.addEventListener('submit', formSubmitHandler);
