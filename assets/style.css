@@ -17,5 +17,15 @@
     flex: 40%;
     padding: 2px;
   }
+  .list-group img {
+    width:250px;
+    height: 250px;
+  }
+   #result-container h3 { 
+  font-size:50px;
+  display: bold;
+  
 
+
+  }
   
