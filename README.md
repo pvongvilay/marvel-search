@@ -22,4 +22,7 @@
 ## Assets
 
 ![Here is a picture of the website mockup.](assets/images/Marvel-website-mockup.jpeg)
-![Here is a picture of the search website for a character.](assets/images/screencapture-127-0-0-1-5500-index-html-2023-06-05-10_22_51.png)
+![Here is a picture of the search website for a character.](assets/images/screencapture-127-0-0-1-5500-index-html-2023-06-05-10_31_12.png)
+
+## Resources
+ // Add the resources we used, everything else is done. 
