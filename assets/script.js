@@ -67,12 +67,14 @@ var getSearchResults = function (user) {
     });
 };
 
+
 var displayWikiData = function (data, searchTerm) {
   console.log(data.query.search, searchTerm)
   var results = data.query.search;
   for (var i=0 ; i < results.length; i++ ){ 
     var listItem = `<li>${results[i].title}</li>`
     resultContainerEl.innerHTML = resultContainerEl.innerHTML + listItem
+
   }
   
 }
