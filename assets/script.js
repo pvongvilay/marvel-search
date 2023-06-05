@@ -78,9 +78,6 @@ var displayWikiData = function (data, searchTerm) {
 }
 
 
-// what data do you want to grab out
-// loop and display some HTML elements to display on page
-// 
 
 var displayResults = function (data) {
   if (data.length === 0) {
@@ -93,7 +90,7 @@ var displayResults = function (data) {
 
   }
 
-var baseUrl = "http://gateway.marvel.com";
+var baseUrl = "https://gateway.marvel.com";
 var apiKey = "6229f92d803a98103b1a75e888b250e9"; // get and insert api key from marvel here
 
 function getMarvelData(mySearchName){
