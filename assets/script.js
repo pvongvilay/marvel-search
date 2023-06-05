@@ -20,9 +20,10 @@ var formSubmitHandler = function (event) {
 
   if  (characterName) {
     getSearchResults(characterName);
+    getMarvelData(characterName);
 
-    resultContainerEl.textContent = ''; 
-    characterInputEl.value = ''; 
+   resultContainerEl.textContent = ''; 
+     characterInputEl.value = ''; 
     console.log(characterName);
   if (characterNames)  {
     characterNames.push(characterName)
@@ -31,7 +32,7 @@ var formSubmitHandler = function (event) {
     characterNames=[characterName]
   }
     localStorage.setItem('characterNames', JSON.stringify(characterNames))
-    document.getElementById('characterNames').innerHTML = characterNames;
+    // document.getElementById('characterNames').innerHTML = characterNames;
   } 
   else {
     alert('Please enter a Marvel character');
@@ -44,7 +45,7 @@ var buttonClickHandler = function (event) {
   if (language) {
     getCharacterResults(language);
 
-    resultContainerEl.textContent = '';
+  resultContainerEl.textContent = '';
   }
 };
 
@@ -66,24 +67,6 @@ var getSearchResults = function (user) {
       alert('Please search another character.');
     });
 };
-
-// 'https://en.wikipedia.org/w/api.php?action=query&format=json&limit=15&callback=?&titles=' + searchCriteria, processResult);
-
-
-// var getCharacterResults = function (language) {
-  // var apiUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${x}'
-	// console.log(apiUrl);
-
-  // fetch(apiUrl).then(function (response) {
-    // if (response.ok) {
-      // response.json().then(function (data) {
-        // displayResults(data.items, language);
-      // });
-    // } else {
-      // alert('Error: ' + response.statusText);
-    // }
-  // });
-// };
 
 var displayWikiData = function (data, searchTerm) {
   console.log(data.query.search, searchTerm)
@@ -113,16 +96,38 @@ var displayResults = function (data) {
 
 var baseUrl = "http://gateway.marvel.com";
 var apiKey = "6229f92d803a98103b1a75e888b250e9"; // get and insert api key from marvel here
-var mySearchName = "thor"; // change to the search input value
 
-fetch(baseUrl + "/v1/public/characters?name=" + mySearchName + "&apikey=" + apiKey)
-  .then(function (res) {
+function getMarvelData(mySearchName){
+fetch(baseUrl + "/v1/public/characters?nameStartsWith=" + mySearchName + "&apikey=" + apiKey)
+.then(function (res) {
     console.log(res);
     return res.json();
   })
   .then(function (data) {
     console.log(data);
+    var character = data.data.results[0]
+    var name = data.data.results[0].name
+    var description = data.data.results[0].description
+    var thumb = data.data.results[0].thumbnail.path + '.' +data.data.results[0].thumbnail.extension
+    displayMarvelCharacter(name,description,thumb)
   });
-  
+}
+
+  var displayMarvelCharacter = function (name,description,thumb) {
+      var title = `<h3>${name}</h3> <p>${description}</p>`
+      var img = `<img src = "${thumb}"></img>`
+    
+      resultContainerEl.innerHTML = resultContainerEl.innerHTML + title + img
+    }
+    
+  // if(response.ok){
+//   response.json().then(function(data){
+//     displayMarvelData(data,user);
+//   })
+// }
+// else {
+//   alert('error: ' + response.statusText);
+// }
+
 // add new referrer to marvel.com when deployed
  userFormEl.addEventListener('submit', formSubmitHandler);
