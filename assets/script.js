@@ -31,7 +31,7 @@ var formSubmitHandler = function (event) {
     characterNames=[characterName]
   }
     localStorage.setItem('characterNames', JSON.stringify(characterNames))
-    // localStorage.getItem('characterName');
+    
     document.getElementById('characterNames').innerHTML = characterNames;
   } 
   else {
@@ -86,16 +86,17 @@ var getCharacterResults = function (language) {
   });
 };
 
-var displayWikiData = function (data, search) {
+var displayWikiData = function (data, searchTerm) {
   console.log(data)
 }
 // what data do you want to grab out
 // loop and display some HTML elements to display on page
 // 
 
-var displayResults = function (repos, searchTerm) {
-  if (repos.length === 0) {
-    repoContainerEl.textContent = 'No repositories found.';
+var displayResults = function (data, searchTerm) {
+    console.log(data)
+  if (data.length === 0) {
+    resultContainerEl.textContent = 'No entries found.';
     return;
   }
 
